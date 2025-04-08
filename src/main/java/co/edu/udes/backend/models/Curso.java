@@ -25,8 +25,8 @@ public class Curso {
     @JoinColumn(name = "asignatura_id,")
     private Asignatura asignatura;
 
-    @OneToMany(mappedBy = "curso")
-    private List<AulaHorario> aulaHorarios;
+//    @OneToMany(mappedBy = "curso")
+//    private List<AulaHorario> aulaHorarios;
 
     @ManyToOne
     @JoinColumn(name = "semestre_academico_id")
@@ -48,7 +48,7 @@ public class Curso {
         this.nombre = nombre;
         this.grupo = grupo;
         this.asignatura = asignatura;
-        this.aulaHorarios = aulaHorarios;
+//        this.aulaHorarios = aulaHorarios;
         this.semestreAcademico = semestreAcademico;
         this.programaAcademico = programaAcademico;
         this.matriculaAcademica = matriculaAcademica;
@@ -110,13 +110,13 @@ public class Curso {
         this.docente = docente;
     }
 
-    public List<AulaHorario> getAulaHorarios() {
-        return aulaHorarios;
-    }
+//    public List<AulaHorario> getAulaHorarios() {
+//        return aulaHorarios;
+//    }
 
-    public void setAulaHorarios(List<AulaHorario> aulaHorarios) {
-        this.aulaHorarios = aulaHorarios;
-    }
+//    public void setAulaHorarios(List<AulaHorario> aulaHorarios) {
+//        this.aulaHorarios = aulaHorarios;
+//    }
 
     public List<MatriculaAcademica> getMatriculaAcademica() {
         return matriculaAcademica;

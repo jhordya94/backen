@@ -51,7 +51,7 @@ public class CursoController {
         curso.setNombre(cursoDetails.getNombre());
         curso.setGrupo(cursoDetails.getGrupo());
         curso.setAsignatura(cursoDetails.getAsignatura());
-        curso.setAulaHorarios(cursoDetails.getAulaHorarios());
+//        curso.setAulaHorarios(cursoDetails.getAulaHorarios());
         curso.setSemestreAcademico(cursoDetails.getSemestreAcademico());
         curso.setProgramaAcademico(cursoDetails.getProgramaAcademico());
         curso.setMatriculaAcademica(cursoDetails.getMatriculaAcademica());
