@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity(name = "asistencias")
+
 public class Asistencia {
 
     @Id
