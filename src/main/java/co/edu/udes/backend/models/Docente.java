@@ -1,76 +1,63 @@
 package co.edu.udes.backend.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-public class Docente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+import java.time.LocalDate;
 
-    @Column(name = "first_name")
-    private String firstName;
+@Entity(name = "docentes")  // Esta es la tabla que se generará en la BD
+public class Docente extends Persona {
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "profesion")
+    private String profesion;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "titulo")
+    private String titulo;
+
+    @Column(name = "experiencia")
+    private int experiencia;
 
     public Docente() {
-
+        super();  // Llama al constructor de Persona
     }
 
-    public Docente(long id, String firstName, String lastName, String email, String telefono) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.telefono = telefono;
+    public Docente(String profesion, String titulo, int experiencia) {
+        this.profesion = profesion;
+        this.titulo = titulo;
+        this.experiencia = experiencia;
     }
 
-    public long getId() {
-        return id;
+    public Docente(long id, String nombre, String telefono, String correoPersonal, LocalDate fechaNacimiento, String numeroDocumento, boolean estado, String profesion, String titulo, int experiencia) {
+        super(id, nombre, telefono, correoPersonal, fechaNacimiento, numeroDocumento, estado);
+        this.profesion = profesion;
+        this.titulo = titulo;
+        this.experiencia = experiencia;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getProfesion() {
+        return profesion;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public int getExperiencia() {
+        return experiencia;
     }
 
-    public String getEmail() {
-        return email;
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public String getTelefono() {
-        return telefono;
-    }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
-    @Column(name = "telefono")
-    private String telefono;
 }
