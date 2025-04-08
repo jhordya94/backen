@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class docente {
+public class Docente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,11 +19,11 @@ public class docente {
     @Column(name = "email")
     private String email;
 
-    public docente() {
+    public Docente() {
 
     }
 
-    public docente(long id, String firstName, String lastName, String email, String telefono) {
+    public Docente(long id, String firstName, String lastName, String email, String telefono) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
