@@ -32,12 +32,19 @@ public class AsignaturaController {
         return asignaturaRepository.save(asignatura);
     }
 
-    // get asignatura by id rest api
-    @GetMapping("/asignaturas/{id}")
-    public ResponseEntity<Asignatura> getAsignaturaById(@PathVariable Long id) {
-        Asignatura asignatura = asignaturaRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Asignatura not exist with id :" + id));
-        return ResponseEntity.ok(asignatura);
+//    // get asignatura by id rest api
+//    @GetMapping("/asignaturas/{id}")
+//    public ResponseEntity<Asignatura> getAsignaturaById(@PathVariable Long id) {
+//        Asignatura asignatura = asignaturaRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Asignatura not exist with id :" + id));
+//        return ResponseEntity.ok(asignatura);
+//    }
+
+    // get asignaturas by pensum id
+    @GetMapping("/asignaturas/pensum/{id}")
+    public List<Asignatura> getAsignaturasByPensum(@PathVariable("id") Long pensumId) {
+        return asignaturaRepository.findByPensumId(pensumId);
+
     }
 
     // update asignatura rest api
