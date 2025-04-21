@@ -1,63 +1,89 @@
 package co.edu.udes.backend.models;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 
-@Entity(name = "docentes")  // Esta es la tabla que se generará en la BD
+@Entity(
+        name = "docentes"
+)
 public class Docente extends Persona {
-
-    @Column(name = "profesion")
-    private String profesion;
-
-    @Column(name = "titulo")
-    private String titulo;
-
-    @Column(name = "experiencia")
-    private int experiencia;
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private long id;
+    @ManyToOne
+    @JoinColumn(
+            name = "facultad_id"
+    )
+    private Facultad facultad;
+    @Column(
+            name = "especialidad"
+    )
+    private String especialidad;
+    @Column(
+            name = "codigo_institucional"
+    )
+    private String codigoInstitucional;
+    @Column(
+            name = "correo_institucional"
+    )
+    private String correoInstitucional;
 
     public Docente() {
-        super();  // Llama al constructor de Persona
     }
 
-    public Docente(String profesion, String titulo, int experiencia) {
-        this.profesion = profesion;
-        this.titulo = titulo;
-        this.experiencia = experiencia;
+    public Docente(long id, String nombre, String telefono, String correoPersonal, LocalDate fechaNacimiento, String numeroDocumento, boolean estado, TipoDocumento tipoDocumento, TipoGenero genero, long id1, Facultad facultad, String especialidad, String codigoInstitucional, String correoInstitucional) {
+        this.id = id1;
+        this.facultad = facultad;
+        this.especialidad = especialidad;
+        this.codigoInstitucional = codigoInstitucional;
+        this.correoInstitucional = correoInstitucional;
     }
 
-    public Docente(long id, String nombre, String telefono, String correoPersonal, LocalDate fechaNacimiento, String numeroDocumento, boolean estado, String profesion, String titulo, int experiencia) {
-        super(id, nombre, telefono, correoPersonal, fechaNacimiento, numeroDocumento, estado);
-        this.profesion = profesion;
-        this.titulo = titulo;
-        this.experiencia = experiencia;
+    public long getId() {
+        return this.id;
     }
 
-    public String getProfesion() {
-        return profesion;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
+    public Facultad getFacultad() {
+        return this.facultad;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public void setFacultad(Facultad facultad) {
+        this.facultad = facultad;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public String getEspecialidad() {
+        return this.especialidad;
     }
 
-    public int getExperiencia() {
-        return experiencia;
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
+    public String getCodigoInstitucional() {
+        return this.codigoInstitucional;
     }
 
+    public void setCodigoInstitucional(String codigoInstitucional) {
+        this.codigoInstitucional = codigoInstitucional;
+    }
 
+    public String getCorreoInstitucional() {
+        return this.correoInstitucional;
+    }
 
-
+    public void setCorreoInstitucional(String correoInstitucional) {
+        this.correoInstitucional = correoInstitucional;
+    }
 }

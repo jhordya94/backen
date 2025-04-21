@@ -13,9 +13,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity(
-        name = "facultades"
+        name = "tipos_documentos"
 )
-public class Facultad {
+public class TipoDocumento {
     @Id
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
@@ -30,10 +30,10 @@ public class Facultad {
     )
     private boolean estado;
 
-    public Facultad() {
+    public TipoDocumento() {
     }
 
-    public Facultad(long id, String nombre, boolean estado) {
+    public TipoDocumento(long id, String nombre, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
@@ -63,3 +63,4 @@ public class Facultad {
         this.estado = estado;
     }
 }
+
