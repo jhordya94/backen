@@ -51,5 +51,6 @@ public class AsignaturaController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
+
     }
 }
