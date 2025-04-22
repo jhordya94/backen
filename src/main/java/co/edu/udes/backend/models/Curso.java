@@ -22,7 +22,7 @@ public class Curso {
     private String grupo;
 
     @ManyToOne
-    @JoinColumn(name = "asignatura_id,")
+    @JoinColumn(name = "asignatura_id")
     private Asignatura asignatura;
 
 //    @OneToMany(mappedBy = "curso")

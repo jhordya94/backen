@@ -17,6 +17,9 @@ public class Estudiante extends Persona {
     @Column(name = "codigo_institucional")
     private String codigoInstitucional;
 
+    @OneToMany(mappedBy = "estudiante")
+    private List<Poligrafo> poligrafos;
+
     @Column(name = "correo_institucional")
     private String correoInstitucional;
 

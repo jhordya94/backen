@@ -1,36 +1,55 @@
 package co.edu.udes.backend.controllers;
 
 import co.edu.udes.backend.models.Evaluacion;
-import co.edu.udes.backend.repositories.EvaluacionRepository;
+import co.edu.udes.backend.services.EvaluacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/evaluaciones")
+@CrossOrigin(origins = {"*"})
+@RequestMapping("/api/v1/")
 public class EvaluacionController {
 
     @Autowired
-    private EvaluacionRepository evaluacionRepository;
+    private EvaluacionService evaluacionService;
 
-    @GetMapping
-    public List<Evaluacion> getAll() {
-        return evaluacionRepository.findAll();
+    // Obtener todas las evaluaciones
+    @GetMapping("/evaluaciones")
+    public List<Evaluacion> getAllEvaluaciones() {
+        return evaluacionService.listarTodas();
     }
 
-    @PostMapping
-    public Evaluacion create(@RequestBody Evaluacion evaluacion) {
-        return evaluacionRepository.save(evaluacion);
+    // Crear una nueva evaluación
+    @PostMapping("/evaluaciones")
+    public Evaluacion createEvaluacion(@RequestBody Evaluacion evaluacion) {
+        return evaluacionService.crear(evaluacion);
     }
 
-    @GetMapping("/{id}")
-    public Evaluacion getById(@PathVariable Long id) {
-        return evaluacionRepository.findById(id).orElse(null);
+    // Obtener evaluación por ID
+    @GetMapping("/evaluaciones/{id}")
+    public ResponseEntity<Evaluacion> getEvaluacionById(@PathVariable Long id) {
+        Evaluacion evaluacion = evaluacionService.buscarPorId(id);
+        return ResponseEntity.ok(evaluacion);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        evaluacionRepository.deleteById(id);
+    // Actualizar evaluación
+    @PutMapping("/evaluaciones/{id}")
+    public ResponseEntity<Evaluacion> updateEvaluacion(@PathVariable Long id, @RequestBody Evaluacion evaluacionDetails) {
+        Evaluacion updated = evaluacionService.actualizar(id, evaluacionDetails);
+        return ResponseEntity.ok(updated);
+    }
+
+    // Eliminar evaluación
+    @DeleteMapping("/evaluaciones/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEvaluacion(@PathVariable Long id) {
+        evaluacionService.eliminar(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }
