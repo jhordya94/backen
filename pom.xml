@@ -35,28 +35,28 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- Driver PostgreSQL compatible con versión 16 -->
+		<!-- Driver PostgreSQL compatible -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.7.3</version> <!-- Última versión estable -->
+			<version>42.7.3</version>
 		</dependency>
 
-		<!-- Lombok para reducir boilerplate -->
+		<!-- Lombok CORREGIDO -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
+			<version>1.18.30</version>
 		</dependency>
 
-		<!-- Apache Velocity si estás usando plantillas -->
+		<!-- Apache Velocity (si usas plantillas, opcional) -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
 		</dependency>
 
-		<!-- Spring Boot DevTools para desarrollo -->
+		<!-- DevTools para desarrollo -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -83,7 +83,7 @@
 
 	<build>
 		<plugins>
-			<!-- Lombok para compilación -->
+			<!-- Plugin para anotaciones de Lombok -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -101,7 +101,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- Plugin Spring Boot -->
+			<!-- Plugin de Spring Boot -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
